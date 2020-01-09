@@ -73,11 +73,9 @@ class SleepTrackerFragment : Fragment() {
         binding.sleepList.adapter = adapter
 
         sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
-            sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
-                it?.let {
-                    adapter.data = it
-                }
-            })
+            it?.let {
+                adapter.submitList(it)
+            }
         })
 
         // Specify the current activity as the lifecycle owner of the binding.
